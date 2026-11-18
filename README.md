@@ -1,4 +1,4 @@
-# practice_app
+# mvvm_demo
 
 A new Flutter project.
 
