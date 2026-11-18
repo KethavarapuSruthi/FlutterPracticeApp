@@ -1,6 +1,6 @@
 {
-    "name": "practice_app",
-    "short_name": "practice_app",
+    "name": "mvvm_demo",
+    "short_name": "mvvm_demo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

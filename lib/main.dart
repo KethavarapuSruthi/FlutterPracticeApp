@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'router/app_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -10,37 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Homepage());
-  }
-}
-
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
-
-  @override
-  State<Homepage> createState() => _HomepageState();
-}
-
-class _HomepageState extends State<Homepage> {
-  Future<void> _openBroswerView() async {
-    final uri = Uri.parse('https://flutter.dev');
-    final opened = await launchUrl(uri, mode: LaunchMode.inAppBrowserView);
-
-    if (!opened) {
-      debugPrint("Could not open $uri");
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("In-app Browser")),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: _openBroswerView,
-          child: Text("Click here for in-app browser"),
-        ),
-      ),
+    return MaterialApp.router(
+      title: 'MVVM Example',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(colorSchemeSeed: Colors.indigo, useMaterial3: true),
+      routerConfig: appRouter,
     );
   }
 }
